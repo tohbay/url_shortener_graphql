@@ -15,12 +15,14 @@ const shortUrl = async (req, res) => {
 
   if (validUrl.isUri(longUrl)) {
     try {
-      let url = await Url.findOne({ longUrl: longUrl });
+      let url = await Url.findOne({ longUrl });
 
       if (url) {
         return res.status(200).json(url);
       } else {
+        
         const shortUrl = baseUrl + "/" + urlCode;
+        
         url = new Url({
           longUrl,
           shortUrl,
