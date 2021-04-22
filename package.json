@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "set NODE_ENV=production && index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.6",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.3",
     "shortid": "^2.2.16",

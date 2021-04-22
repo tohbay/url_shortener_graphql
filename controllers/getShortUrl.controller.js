@@ -1,5 +1,6 @@
-const config = require("config");
 const Url = require("../models/url.model");
+
+require('dotenv').config();
 
 const getShortUrl = async (req, res) => {
   let shortUrlCode = req.params.shortUrl;
@@ -9,14 +10,14 @@ const getShortUrl = async (req, res) => {
   try {
     if (url) {
       let clickCount = url.clickCount;
-      if (clickCount >= config.allowedClick) {
+      if (clickCount >= process.env.allowedClick) {
         return res
           .status(400)
           .json(
             "The click count for shortcode " +
               shortUrlCode +
               " has passed the limit of " +
-              config.allowedClick
+              process.env.allowedClick
           );
       }
 

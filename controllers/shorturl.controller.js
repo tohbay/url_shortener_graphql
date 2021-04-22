@@ -1,11 +1,12 @@
 const shortid = require("shortid");
 const validUrl = require("valid-url");
-const config = require("config");
 const Url = require("../models/url.model");
+
+require('dotenv').config();
 
 const shortUrl = async (req, res) => {
   const longUrl = req.body.longUrl;
-  const baseUrl = config.get("baseURL");
+  const baseUrl = process.env.baseUrl
 
   if (!validUrl.isUri(baseUrl)) {
     return res.status(401).json("Internal error. Please come back later.");
